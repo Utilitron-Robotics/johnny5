@@ -1,5 +1,18 @@
 # Open-Source Mobile Manipulation: Choose Your Path
 
+<div align="center">
+
+![Johnny 5](docs/media/alohamini_git.png)
+
+[![LeRobot](https://img.shields.io/badge/Hugging%20Face-LeRobot-orange?logo=huggingface)](https://github.com/huggingface/lerobot)
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python)](https://www.python.org/)
+[![ROS2](https://img.shields.io/badge/ROS2-Humble-green?logo=ros)](https://docs.ros.org/en/humble/)
+[![Jetson](https://img.shields.io/badge/NVIDIA-Jetson-76B900?logo=nvidia)](https://developer.nvidia.com/embedded/jetson-modules)
+[![OAK-D](https://img.shields.io/badge/Luxonis-OAK--D-blue)](https://docs.luxonis.com/)
+[![Gun.js](https://img.shields.io/badge/Database-Gun.js-red)](https://gun.eco/)
+
+</div>
+
 This repository hosts two distinct robot platforms derived from the LeKiwi/SO-ARM100 lineage. Whether you are an educator looking for an affordable teleoperation platform or a researcher building autonomous agents, there is a path for you.
 
 ## 🤖 Path A: AlohaMini (The Entry Level)
