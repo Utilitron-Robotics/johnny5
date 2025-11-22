@@ -17,8 +17,11 @@ if src_root not in sys.path:
 try:
     from lerobot.robots.alohamini.lekiwi import AlohaMiniDivergent
     from lerobot.robots.alohamini.config_lekiwi import LeKiwiConfig
+    
+    from johnny5.robot import Johnny5Robot
+    from johnny5.config import Johnny5Config
 except ImportError as e:
-    print(f"Error importing AlohaMini drivers: {e}")
+    print(f"Error importing Robot drivers: {e}")
     print("Please ensure you are running from the workspace root or have installed the package.")
     sys.exit(1)
 
@@ -27,16 +30,29 @@ class AlohaNode(Node):
         super().__init__('aloha_node')
         
         # Parameters
+        self.declare_parameter('robot_type', 'aloha') # aloha or johnny5
         self.declare_parameter('left_port', '/dev/am_arm_follower_left')
         self.declare_parameter('right_port', '/dev/am_arm_follower_right')
         
+        robot_type = self.get_parameter('robot_type').value
+        left_port = self.get_parameter('left_port').value
+        right_port = self.get_parameter('right_port').value
+
         # Initialize Robot
-        self.get_logger().info("Initializing AlohaMini Driver...")
-        config = LeKiwiConfig(
-            left_port=self.get_parameter('left_port').value,
-            right_port=self.get_parameter('right_port').value
-        )
-        self.robot = AlohaMiniDivergent(config)
+        self.get_logger().info(f"Initializing {robot_type} Driver...")
+        
+        if robot_type == 'johnny5':
+            config = Johnny5Config(
+                left_bus_port=left_port,
+                right_bus_port=right_port
+            )
+            self.robot = Johnny5Robot(config)
+        else:
+            config = LeKiwiConfig(
+                left_port=left_port,
+                right_port=right_port
+            )
+            self.robot = AlohaMiniDivergent(config)
         
         try:
             self.robot.connect(calibrate=False) # Assume calibrated or handle separately
