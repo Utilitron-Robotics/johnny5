@@ -6,6 +6,7 @@ This Bill of Materials is specifically for upgrading an existing **LeKiwi** (sta
 You must print the following parts to create the mobile chassis and Z-axis tower.
 *   **Material**: PLA, PETG, or ABS (Recommended: PETG for durability)
 *   **Infill**: 20-30% Gyroid
+*   **Printer Requirement**: Bed size > 325mm x 325mm (e.g., Voron 350, Prusa XL) for single-piece chassis.
 *   **Files Location**: `hardware/alohamini_base/stl/`
 
 | Part Name | Qty | Description |

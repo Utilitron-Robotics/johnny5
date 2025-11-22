@@ -13,9 +13,9 @@
 
 </div>
 
-This repository hosts two distinct robot platforms derived from the LeKiwi/SO-ARM100 lineage. Whether you are an educator looking for an affordable teleoperation platform or a researcher building autonomous agents, there is a path for you.
+This repository hosts two distinct robot platforms derived from the LeKiwi/SO-ARM100 lineage. Whether you are an educator looking for an affordable teleoperation platform or a researcher building autonomous agents, there is a path for you.  Upgrade your existing LeKiwi to a more useful platform or rebuild it entirely to get a production grade, entry level robotics platform capable of real work.
 
-## 🤖 Path A: AlohaMini (The Entry Level)
+## 🤖 Path A: AlohaMini (The Entry Level - Easiest LeKiwi Upgrade Path)
 **"The Affordable Teleoperator"**
 
 *   **Best For**: Education, Hobbyists, Teleoperation collection.
@@ -24,7 +24,7 @@ This repository hosts two distinct robot platforms derived from the LeKiwi/SO-AR
 *   **Key Feature**: Low barrier to entry, highly documented assembly.
 *   **Documentation**: [Assembly Guide](docs/hardware_assembly.md) | [BOM](docs/BOM.md) | [LeKiwi Upgrade Guide](docs/lekiwi_upgrade_guide.md)
 
-## 🤖 Path B: Johnny 5 (The Autonomous Pro)
+## 🤖 Path B: Johnny 5 (The Autonomous Pro - Real Robot for Real Work)
 **"Input! More Input!"**
 
 *   **Best For**: AI Research, VSLAM, Outdoor Utility.
@@ -48,6 +48,11 @@ This repository hosts two distinct robot platforms derived from the LeKiwi/SO-AR
 
 ## 🚀 Getting Started
 See [Upgrade Paths](docs/upgrade_paths.md) for a detailed comparison and decision guide.
+
+## 🗺️ Roadmap
+*   **Split Chassis Design**: We are developing a 2-piece interlocking chassis to support smaller 3D printers (currently requires >325mm bed).
+*   **Johnny 5 Differential Drive**: Finalizing the off-the-shelf base integration.
+*   **LeRobot Policy Training**: Releasing pre-trained weights for common household tasks.
 
 ## Acknowledgements
 Originally based on [LeKiwi](https://github.com/TheRobotStudio/SO-ARM100) and the work of the LeRobot community.

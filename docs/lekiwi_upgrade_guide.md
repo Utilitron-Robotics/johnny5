@@ -7,6 +7,8 @@ This guide covers the physical transformation of a LeKiwi station (or standalone
 ## 📋 Prerequisites
 *   **Existing Hardware**: 1 or 2 SO-ARM100 Arms (LeKiwi setup).
 *   **Fabrication**: Access to a 3D Printer (PETG recommended).
+    *   ⚠️ **CRITICAL**: The current single-piece chassis requires a large print bed (**>325mm x 325mm**).
+    *   *Note*: A split 2-piece chassis for standard printers (Ender 3/Prusa) is on the roadmap.
 *   **Parts**: See the **[Detailed Upgrade BOM](lekiwi_to_alohamini_bom.md)** for the full shopping list.
 
 ## 1. Base Fabrication (Printing & Repurposing)
