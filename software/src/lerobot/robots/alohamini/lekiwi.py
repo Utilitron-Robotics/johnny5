@@ -65,39 +65,47 @@ class AlohaMiniDivergent(Robot):
         self.smoothing_alpha = 0.1 # Lower = smoother
 
 
-        self.left_bus = FeetechMotorsBus(
-            port=self.config.left_port,
-            motors={
-                # arm
+        # Define Left Bus Motors (Base + Lift are always present)
+        left_motors = {
+            # base
+            "base_left_wheel": Motor(8, "sts3215", MotorNormMode.RANGE_M100_100),
+            "base_back_wheel": Motor(9, "sts3215", MotorNormMode.RANGE_M100_100),
+            "base_right_wheel": Motor(10, "sts3215", MotorNormMode.RANGE_M100_100),
+            "lift_axis": Motor(11, "sts3215", MotorNormMode.DEGREES),
+        }
+        
+        # Add Left Arm if present
+        if getattr(self.config, "has_left_arm", True):
+            left_motors.update({
                 "arm_left_shoulder_pan": Motor(1, "sts3215", norm_mode_body),
                 "arm_left_shoulder_lift": Motor(2, "sts3215", norm_mode_body),
                 "arm_left_elbow_flex": Motor(3, "sts3215", norm_mode_body),
                 "arm_left_wrist_flex": Motor(4, "sts3215", norm_mode_body),
-                #"left_wrist_yaw": Motor(5, "sts3215", norm_mode_body),
                 "arm_left_wrist_roll": Motor(5, "sts3215", norm_mode_body),
                 "arm_left_gripper": Motor(6, "sts3215", MotorNormMode.RANGE_0_100),
-                # base
-                "base_left_wheel": Motor(8, "sts3215", MotorNormMode.RANGE_M100_100),
-                "base_back_wheel": Motor(9, "sts3215", MotorNormMode.RANGE_M100_100),
-                "base_right_wheel": Motor(10, "sts3215", MotorNormMode.RANGE_M100_100),
-                "lift_axis": Motor(11, "sts3215", MotorNormMode.DEGREES),
-            },
+            })
+
+        self.left_bus = FeetechMotorsBus(
+            port=self.config.left_port,
+            motors=left_motors,
             calibration=self.calibration,
         )
 
-        self.right_bus = FeetechMotorsBus(
-            port=self.config.right_port,
-            motors={
-                # arm
+        # Define Right Bus Motors
+        right_motors = {}
+        if getattr(self.config, "has_right_arm", True):
+            right_motors = {
                 "arm_right_shoulder_pan": Motor(1, "sts3215", norm_mode_body),
                 "arm_right_shoulder_lift": Motor(2, "sts3215", norm_mode_body),
                 "arm_right_elbow_flex": Motor(3, "sts3215", norm_mode_body),
                 "arm_right_wrist_flex": Motor(4, "sts3215", norm_mode_body),
-                #"right_wrist_yaw": Motor(5, "sts3215", norm_mode_body),
                 "arm_right_wrist_roll": Motor(5, "sts3215", norm_mode_body),
                 "arm_right_gripper": Motor(6, "sts3215", MotorNormMode.RANGE_0_100),
-                #"lift_axis": Motor(12, "sts3215", MotorNormMode.DEGREES),
-            },
+            }
+
+        self.right_bus = FeetechMotorsBus(
+            port=self.config.right_port,
+            motors=right_motors,
             calibration=self.calibration,
         )
 

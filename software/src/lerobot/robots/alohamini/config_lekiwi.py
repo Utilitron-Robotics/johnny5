@@ -44,8 +44,14 @@ def lekiwi_cameras_config() -> dict[str, CameraConfig]:
 @RobotConfig.register_subclass("alohamini_divergent")
 @dataclass
 class LeKiwiConfig(RobotConfig):
-    left_port: str = "/dev/am_arm_follower_left"  # port to connect to the bus
-    right_port: str = "/dev/am_arm_follower_right"  # port to connect to the bus
+    # Supports single arm (e.g. LeKiwi upgrade) or dual arm
+    left_port: str = "/dev/am_arm_follower_left"  # Controls Left Arm + Base + Lift
+    right_port: str = "/dev/am_arm_follower_right"  # Controls Right Arm
+    
+    # Feature flags for partial assembly
+    has_left_arm: bool = True
+    has_right_arm: bool = True
+    
     disable_torque_on_disconnect: bool = True
 
     # `max_relative_target` limits the magnitude of the relative positional target vector for safety purposes.

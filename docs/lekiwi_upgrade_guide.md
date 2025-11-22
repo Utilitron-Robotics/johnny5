@@ -1,53 +1,89 @@
 # LeKiwi to AlohaMini Upgrade Guide
 
-**Transform your static SO-ARM100 robot into a mobile manipulator with a vertical lift.**
+**From Stationary Single-Arm to Mobile Manipulation.**
 
-This guide covers the physical transformation of a LeKiwi station (or standalone SO-ARM100 arms) into an AlohaMini mobile robot.
+This guide covers upgrading a **LeKiwi** (Single SO-ARM100 on a desk stand) to the **AlohaMini** platform.
 
-## 📋 Prerequisites
-*   **Existing Hardware**: 1 or 2 SO-ARM100 Arms (LeKiwi setup).
-*   **Fabrication**: Access to a 3D Printer (PETG recommended).
-    *   ⚠️ **CRITICAL**: The current single-piece chassis requires a large print bed (**>325mm x 325mm**).
-    *   *Note*: A split 2-piece chassis for standard printers (Ender 3/Prusa) is on the roadmap.
-*   **Parts**: See the **[Detailed Upgrade BOM](lekiwi_to_alohamini_bom.md)** for the full shopping list.
+## 🛤️ Choose Your Path
 
-## 1. Base Fabrication (Printing & Repurposing)
-The AlohaMini uses a custom 3D-printed chassis. Unlike the LeKiwi which clamps to a table, this robot carries its own weight.
+### Path 1: The "Mobile Kiwi" (Single Arm)
+*   **Goal**: Get your LeKiwi moving.
+*   **Cost**: Low (Only need Base parts + Electronics).
+*   **Result**: A 3-wheeled mobile robot with one arm and a vertical lift.
+*   **Pros**: Cheaper, uses existing hardware.
+*   **Cons**: Reduced manipulation capability (bimanual tasks impossible).
 
-*   **Print List**: See `hardware/alohamini_base/stl/`
-*   **Critical Part**: `O_T_Connector_Cross_Bar.stl`. This part replaces your desk clamps. It is the central "spine" that holds both arms and connects them to the Z-axis lift.
+### Path 2: Full AlohaMini (Dual Arm)
+*   **Goal**: Full bimanual teleoperation.
+*   **Cost**: Medium (Base parts + Cost of a 2nd SO-ARM100).
+*   **Result**: The standard AlohaMini configuration.
+*   **Pros**: Capable of complex human-like tasks.
+*   **Cons**: More assembly, higher cost.
+
+---
+
+## 1. Fabrication (The Chassis)
+
+**⚠️ PRINTER WARNING**: The main chassis plates require a large print bed (**>325mm x 325mm**). If you have a standard Ender 3 or Prusa MK3/4, you will need to wait for the "Split Chassis" update or find a printing service.
+
+*   **Print Files**: `hardware/alohamini_base/stl/`
+*   **Material**: PETG (Recommended) or PLA+.
+*   **Infill**: 25% Gyroid for strength.
 
 ## 2. Assembly Steps
 
-### Step A: Construct the Mobile Base
-1.  Install the 3x Feetech STS3215 servos into the `OB_Chassis_Servo_Mounts`.
-2.  Attach the Omni Wheels to the servos using the `OB_Chassis_Wheel_Axle_Connector`.
-3.  Sandwich the mounts between the `Lower` and `Upper` chassis plates using M3x12 screws.
+### Step A: The Mobile Base (Common)
+1.  **Servos**: Install the 3x Feetech STS3215 servos into the `OB_Chassis_Servo_Mounts`.
+2.  **Wheels**: Mount the Omni Wheels to the servos using the axle connectors.
+3.  **Frame**: Bolt the mounts between the `Lower` and `Upper` chassis plates using M3x12 screws.
 
-### Step B: Build the Z-Axis Tower
-1.  Assemble the 4 main posts (`O_Main_Assembly_Post 1-4`) to form the central tower.
-2.  Install the linear rails/bearings into the tower channels.
-3.  Mount the Lift Servo (ID 11) at the base of the tower using `OB_Z_Axis_Servo_Mount`.
-4.  Attach the Rack Gear (`OB_Z_Axis_Servo_Gear`) to the servo horn.
+### Step B: The Z-Axis Tower (Common)
+1.  Assemble the 4 main posts (`O_Main_Assembly_Post`) to create the central spine.
+2.  Install linear bearings/rails into the spine channels.
+3.  Mount the Lift Servo (ID 11) and Rack Gear at the base.
+4.  Install the **T-Connector Cross Bar** onto the rails. This is the critical mount point for the arms.
 
-### Step C: Migrate the Arms
-**WARNING**: Ensure arms are powered off and disconnected.
+### Step C: Arm Migration
 
-1.  **Unmount**: Remove your SO-ARM100 arms from their current desk/table mounts. You will keep the arms intact but discard the table clamp base.
-2.  **Remount**: Bolt the base of each arm to the `O_T_Connector_Cross_Bar` using 4x M3x30 screws.
-    *   *Single Arm Setup*: If you only have one arm, mount it to the Right side (standard leader). The base is stable enough to support an unbalanced load, though adding a counterweight to the Left side is recommended for smoother motion.
-3.  **Install**: Slide the `O_T_Connector_Cross_Bar` (now holding the arms) onto the Z-Axis tower rails.
+#### For "Mobile Kiwi" (Single Arm)
+1.  **Unmount**: Remove your SO-ARM100 from its desk stand. Keep the arm assembled.
+2.  **Mount**: Bolt the arm to the **Right Side** of the T-Connector Cross Bar using 4x M3x30 screws.
+3.  **Counterweight (Optional)**: The base is wide enough to be stable with one arm, but adding a dummy weight (or even your battery pack) to the Left side of the Cross Bar will improve movement smoothness.
 
-### Step D: Electronics & Wiring
-1.  Mount the Raspberry Pi 5 and Servo Driver to the back of the tower.
-2.  **Cable Management**: Route the arm bus cables down the tower to the driver. Ensure enough slack for the Z-axis to move up and down (approx 30cm travel).
-3.  **Power**: Connect the 12V battery to the DC-DC converter (for Pi) and directly to the Servo Driver (for Motors).
+#### For Full AlohaMini (Dual Arm)
+1.  **Unmount**: Remove existing arm from desk stand.
+2.  **Build/Prep 2nd Arm**: Assemble your second SO-ARM100 (Refer to SO-ARM100 docs).
+3.  **Mount**: Bolt one arm to the Left and one to the Right of the T-Connector Cross Bar.
 
-## 3. Software Setup
-Once assembled, flash the **AlohaMini** software image to the Raspberry Pi.
-*   **Config**: Update `config_alohamini.py` to reflect if you are using 1 or 2 arms.
-*   **Calibration**: Run the Z-axis homing script immediately to prevent the lift from crashing into the chassis.
+### Step D: Electronics
+1.  **Brain**: Mount the Raspberry Pi 5 to the back of the Tower.
+2.  **Power**:
+    *   Battery 1 (Motors): Connect to the Waveshare Servo Driver.
+    *   Battery 2 (Compute): Connect to the DC-DC converter -> Pi 5 USB-C.
+3.  **Bus Cabling**:
+    *   Daisy chain the Arm servos.
+    *   Connect the Base servos (IDs 8, 9, 10) and Lift servo (ID 11) to the same bus.
 
-## 4. Next Steps
-*   [Software Setup Guide](software_setup.md)
-*   [Teleoperation Tutorial](../README.md)
+## 3. Software Configuration
+
+### Config Adjustment
+If running **Path 1 (Single Arm)**, you must modify `config_lekiwi.py`.
+
+By default, the code expects two arms (`left_port` and `right_port`). For a single arm setup:
+
+1.  Open `software/src/lerobot/robots/alohamini/config_lekiwi.py`.
+2.  Locate the `LeKiwiConfig` class.
+3.  Change the unused port to `None`:
+    ```python
+    @dataclass
+    class LeKiwiConfig(RobotConfig):
+        # For Single Arm (Right side only)
+        left_port: str | None = None 
+        right_port: str = "/dev/am_arm_follower_right"
+    ```
+4.  The `AlohaMiniDivergent` driver will automatically detect the `None` value and skip initialization for that arm.
+
+### Calibration
+Run the calibration script to zero the Z-axis and new wheels:
+```bash
+python3 -m lerobot.robots.alohamini.lekiwi_calibrate
