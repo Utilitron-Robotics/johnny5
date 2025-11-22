@@ -47,6 +47,26 @@ This repository hosts two distinct robot platforms derived from the LeKiwi/SO-AR
 *   `software/src/johnny5/`: Python drivers for Johnny 5 (Jetson/Diff-Drive).
 
 ## 🚀 Getting Started
+## 🐢 ROS 2 Integration
+The AlohaMini now supports ROS 2 Humble via the `alohamini_ros2` wrapper.
+
+**Features:**
+*   **Base Control**: Subscribe to `/cmd_vel` (Twist) for omni-directional movement.
+*   **Joint Feedback**: Publish `/joint_states` for all arms and wheels.
+*   **Visualization**: Compatible with RViz for real-time monitoring.
+
+**Usage:**
+```bash
+# 1. Source your ROS 2 installation
+source /opt/ros/humble/setup.bash
+
+# 2. Build the package
+colcon build --packages-select alohamini_ros2
+source install/setup.bash
+
+# 3. Launch the node
+ros2 launch alohamini_ros2 aloha.launch.py
+```
 See [Upgrade Paths](docs/upgrade_paths.md) for a detailed comparison and decision guide.
 
 ## 🗺️ Roadmap
