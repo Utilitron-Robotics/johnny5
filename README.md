@@ -39,7 +39,7 @@ This repository hosts four distinct robot platforms derived from the LeKiwi/SO-A
 *   **Key Feature**: Rugged navigation, "Hanging Shoulder" arms (270° ROM), Towing capability.
 *   **Documentation**: [Specification](docs/johnny5_spec.md) | [Migration Notes](docs/johnny5_migration_notes.md)
 
-## 🤖 Path C: K-1 Booster / XLeRobot (The Humanoid - Commercial Grade)
+## 🤖 Path C: K-1 Booster (The Humanoid - Commercial Grade)
 **"I am Alive!"**
 
 *   **Best For**: Commercial Deployment, Human-Robot Interaction, Full Autonomy.
@@ -49,7 +49,6 @@ This repository hosts four distinct robot platforms derived from the LeKiwi/SO-A
 *   **Audio**: Full Array Microphone + Speaker (Natural Conversation).
 *   **Key Feature**: Full-body capabilities, ROS 2 / Fast-DDS control, Privacy-first "WhoAmI" memory.
 *   **Source Code**: See the **[Booster K1 Repository](https://github.com/alanchelmickjr/booster_k1)** (Currently in Alpha).
-*   **DIY Upgrade Option**: You can also upgrade a LeKiwi directly to a mobile manipulator using an **IKEA cart** and additional parts, running this same advanced software stack!
 
 ## 🤖 Path D: R2D3 (The Bimanual Specialist - Open Droids)
 **"Two Hands are Better Than One"**
@@ -62,10 +61,21 @@ This repository hosts four distinct robot platforms derived from the LeKiwi/SO-A
 *   **Key Feature**: Dual 7-DOF arms, Telescoping torso for variable height interaction.
 *   **Source Code**: See the **[R2D3 ROS2 Repository](https://github.com/alanchelmickjr/R2D3_ros2)**.
 
+## 🤖 Path E: XLeRobot (Practical Dual-Arm Mobile Home Robot)
+**"Practical Embodied AI for <$700"**
+
+*   **Best For**: Mobile Manipulation, Household Tasks, Low-Cost Entry.
+*   **Brain**: Laptop / Jetson / Raspberry Pi.
+*   **Base**: Custom Mobile Base (Dual-wheel).
+*   **Vision**: Dual-eye RGB / RealSense RGBD.
+*   **Key Feature**: 6-DOF Arms, Mobile Base, Teleoperation via VR/Xbox/Keyboard.
+*   **Source Code**: See the **[XLeRobot Repository](https://github.com/Vector-Wangel/XLeRobot)**.
+*   **Note**: This platform serves as an excellent low-cost alternative for mobile manipulation and runs the shared "WhoAmI" stack.
+
 ---
 
 ## 🧠 Universal Intelligence: WhoAmI
-All four platforms run the [WhoAmI](https://github.com/alanchelmickjr/whoami) software stack, ensuring code portability. This software also powers our specialized **Greeter Bot**, which runs on the **XLeRobot** and **R2D3** platforms as a dedicated reception/interaction agent.
+All platforms run the [WhoAmI](https://github.com/alanchelmickjr/whoami) software stack, ensuring code portability. This software also powers our specialized **Greeter Bot**, which runs on the **XLeRobot** and **R2D3** platforms as a dedicated reception/interaction agent.
 
 *   **Voice**: Natural F5-TTS Neural Voice (talks like a human).
 *   **Vision**: Face recognition (YOLO/DeepFace) and spatial awareness.
@@ -113,7 +123,7 @@ See [Upgrade Paths](docs/upgrade_paths.md) for a detailed comparison and decisio
 **Goal**: Unified codebase for all platforms (AlohaMini, Johnny 5, K-1/XLeRobot, R2D3).
 
 1.  **Step 1: Tie the Rope (Current Phase)**
-    *   Align software stacks across repositories (`alohamini`, `whoami`, `booster_k1`, `R2D3_ros2`).
+    *   Align software stacks across repositories (`alohamini`, `whoami`, `booster_k1`, `R2D3_ros2`, `XLeRobot`).
     *   Ensure feature parity (Vision, Voice, Memory) across all hardware.
     *   "Keep them swinging together" - Synchronize development updates.
 
