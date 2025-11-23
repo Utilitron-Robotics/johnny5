@@ -17,14 +17,14 @@
 [![OAK-D](https://img.shields.io/badge/Luxonis-OAK--D-blue)](https://docs.luxonis.com/)
 [![Gun.js](https://img.shields.io/badge/Database-Gun.js-red)](https://gun.eco/)
 
-# : Open-Source Mobile ManipulationChoose Your Path
+# Open-Source Mobile Manipulation : Choose Your Path
 </div>
 
 This repository hosts five distinct robot platforms derived from the LeKiwi/SO-ARM100 lineage and the WhoAmI intelligence stack. Whether you are an educator looking for an affordable teleoperation platform, a researcher building autonomous agents, or a developer deploying full humanoids or dual-arm manipulators, there is a path for you. Upgrade your existing LeKiwi, rebuild it entirely for real work, go full humanoid, or deploy sophisticated dual-arm systems.
 
 **One Brain, Many Bodies:** All platforms share the same **[WhoAmI](https://github.com/alanchelmickjr/whoami)** intelligence layer—providing secure face recognition, voice interaction, and personal memory regardless of the physical form factor.
 
-## 🤖 Path A: AlohaMini (The Entry Level - Easiest LeKiwi Upgrade Path)
+## 🤖 Path A: AlohaMini (The Entry Level - upgrade your LeKiwi!)
 **"The Affordable Teleoperator"**
 
 *   **Best For**: Education, Hobbyists, Teleoperation collection.
