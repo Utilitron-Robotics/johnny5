@@ -1,8 +1,16 @@
-# Open-Source Mobile Manipulation: Choose Your Path
+# Johnny 5: Open-Source Mobile Manipulation
 
 <div align="center">
 
-![Johnny 5](docs/media/alohamini_git.png)
+![Johnny 5 Animation](docs/media/johnny5_anim.gif)
+
+<p align="center">
+  <img src="docs/media/johnny5_shot_1.png" width="30%" />
+  <img src="docs/media/johnny5_shot_2.png" width="30%" />
+  <img src="docs/media/johnny5_shot_3.png" width="30%" />
+</p>
+
+# Choose Your Path
 
 [![LeRobot](https://img.shields.io/badge/Hugging%20Face-LeRobot-orange?logo=huggingface)](https://github.com/huggingface/lerobot)
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python)](https://www.python.org/)
