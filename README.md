@@ -13,7 +13,9 @@
 
 </div>
 
-This repository hosts two distinct robot platforms derived from the LeKiwi/SO-ARM100 lineage. Whether you are an educator looking for an affordable teleoperation platform or a researcher building autonomous agents, there is a path for you.  Upgrade your existing LeKiwi to a more useful platform or rebuild it entirely to get a production grade, entry level robotics platform capable of real work.
+This repository hosts four distinct robot platforms derived from the LeKiwi/SO-ARM100 lineage and the WhoAmI intelligence stack. Whether you are an educator looking for an affordable teleoperation platform, a researcher building autonomous agents, or a developer deploying full humanoids or dual-arm manipulators, there is a path for you. Upgrade your existing LeKiwi, rebuild it entirely for real work, go full humanoid, or deploy sophisticated dual-arm systems.
+
+**One Brain, Many Bodies:** All platforms share the same **[WhoAmI](https://github.com/alanchelmickjr/whoami)** intelligence layer—providing secure face recognition, voice interaction, and personal memory regardless of the physical form factor.
 
 ## 🤖 Path A: AlohaMini (The Entry Level - Easiest LeKiwi Upgrade Path)
 **"The Affordable Teleoperator"**
@@ -36,6 +38,40 @@ This repository hosts two distinct robot platforms derived from the LeKiwi/SO-AR
 *   **Audio**: 4-Way Directional Mic Array + Speaker (Talks and Hears).
 *   **Key Feature**: Rugged navigation, "Hanging Shoulder" arms (270° ROM), Towing capability.
 *   **Documentation**: [Specification](docs/johnny5_spec.md) | [Migration Notes](docs/johnny5_migration_notes.md)
+
+## 🤖 Path C: K-1 Booster / XLeRobot (The Humanoid - Commercial Grade)
+**"I am Alive!"**
+
+*   **Best For**: Commercial Deployment, Human-Robot Interaction, Full Autonomy.
+*   **Brain**: NVIDIA Jetson Orin NX (8GB+).
+*   **Base**: 22-DOF Humanoid (Bipedal walking).
+*   **Vision**: Intel RealSense / ToF (RGBD Spatial Awareness).
+*   **Audio**: Full Array Microphone + Speaker (Natural Conversation).
+*   **Key Feature**: Full-body capabilities, ROS 2 / Fast-DDS control, Privacy-first "WhoAmI" memory.
+*   **Source Code**: See the **[Booster K1 Repository](https://github.com/alanchelmickjr/booster_k1)** (Currently in Alpha).
+*   **DIY Upgrade Option**: You can also upgrade a LeKiwi directly to a mobile manipulator using an **IKEA cart** and additional parts, running this same advanced software stack!
+
+## 🤖 Path D: R2D3 (The Bimanual Specialist - Open Droids)
+**"Two Hands are Better Than One"**
+
+*   **Best For**: Dual-arm manipulation, Reception/Greeter tasks, Complex interaction.
+*   **Brain**: NVIDIA Jetson (Xavier NX / Orin).
+*   **Base**: Differential Drive (Woosh Chassis) with Lifting Torso.
+*   **Vision**: Intel RealSense D435C.
+*   **Audio**: Microphone Array (Fun M240) + Speaker.
+*   **Key Feature**: Dual 7-DOF arms, Telescoping torso for variable height interaction.
+*   **Source Code**: See the **[R2D3 ROS2 Repository](https://github.com/alanchelmickjr/R2D3_ros2)**.
+
+---
+
+## 🧠 Universal Intelligence: WhoAmI
+All four platforms run the [WhoAmI](https://github.com/alanchelmickjr/whoami) software stack, ensuring code portability. This software also powers our specialized **Greeter Bot**, which runs on the **XLeRobot** and **R2D3** platforms as a dedicated reception/interaction agent.
+
+*   **Voice**: Natural F5-TTS Neural Voice (talks like a human).
+*   **Vision**: Face recognition (YOLO/DeepFace) and spatial awareness.
+*   **Memory**: Gun.js decentralized, encrypted database (Robot-owned memory, no cloud).
+*   **Security**: Hardware-backed encryption.
+*   **Privacy**: "Opt-in" interaction philosophy.
 
 ---
 
@@ -73,10 +109,30 @@ ros2 launch alohamini_ros2 aloha.launch.py
 ```
 See [Upgrade Paths](docs/upgrade_paths.md) for a detailed comparison and decision guide.
 
-## 🗺️ Roadmap
+## 🗺️ Roadmap & Consolidation Strategy
+**Goal**: Unified codebase for all platforms (AlohaMini, Johnny 5, K-1/XLeRobot, R2D3).
+
+1.  **Step 1: Tie the Rope (Current Phase)**
+    *   Align software stacks across repositories (`alohamini`, `whoami`, `booster_k1`, `R2D3_ros2`).
+    *   Ensure feature parity (Vision, Voice, Memory) across all hardware.
+    *   "Keep them swinging together" - Synchronize development updates.
+
+2.  **Step 2: Consolidate**
+    *   Remove overlapping code.
+    *   Merge into a single, modular monorepo.
+    *   Unified installation and configuration for any supported robot.
+
+### Upcoming Features
 *   **Split Chassis Design**: We are developing a 2-piece interlocking chassis to support smaller 3D printers (currently requires >325mm bed).
 *   **Johnny 5 Differential Drive**: Finalizing the off-the-shelf base integration.
 *   **LeRobot Policy Training**: Releasing pre-trained weights for common household tasks.
+
+### 🔭 Long-Term Vision
+**"Autonomous Creation"**
+We are building towards a future where agents can design and fabricate their own bodies in real-time.
+*   **Self-Fabrication**: Robots capable of 3D scanning, designing, and printing their own tools and upgrades.
+*   **Adaptive Embodiment**: Intelligence that can instantly adapt to new physical forms (wheels -> legs -> treads).
+*   **Real-time Agent Deployment**: Cloud-based agents instantiating into physical bodies on demand.
 
 ## Acknowledgements
 Originally based on [LeKiwi](https://github.com/TheRobotStudio/SO-ARM100) and the work of the LeRobot community.
