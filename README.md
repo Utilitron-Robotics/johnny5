@@ -21,6 +21,8 @@ This repository hosts two distinct robot platforms derived from the LeKiwi/SO-AR
 *   **Best For**: Education, Hobbyists, Teleoperation collection.
 *   **Brain**: Raspberry Pi 5.
 *   **Base**: 3-Wheel Omni-directional (3D printed).
+*   **Vision**: Standard USB Webcams.
+*   **Audio**: Standard USB Audio (Optional).
 *   **Key Feature**: Low barrier to entry, highly documented assembly.
 *   **Documentation**: [Assembly Guide](docs/hardware_assembly.md) | [BOM](docs/BOM.md) | [LeKiwi Upgrade Guide](docs/lekiwi_upgrade_guide.md)
 
@@ -30,6 +32,8 @@ This repository hosts two distinct robot platforms derived from the LeKiwi/SO-AR
 *   **Best For**: AI Research, VSLAM, Outdoor Utility.
 *   **Brain**: NVIDIA Jetson Orin Nano (8GB+).
 *   **Base**: Differential Drive with Rubber Tires (Off-the-shelf).
+*   **Vision**: Luxonis OAK-D S3 Pro (AI Depth Camera).
+*   **Audio**: 4-Way Directional Mic Array + Speaker (Talks and Hears).
 *   **Key Feature**: Rugged navigation, "Hanging Shoulder" arms (270° ROM), Towing capability.
 *   **Documentation**: [Specification](docs/johnny5_spec.md) | [Migration Notes](docs/johnny5_migration_notes.md)
 
